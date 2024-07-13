@@ -145,10 +145,10 @@ record_identifier=$(echo "$record" | sed -E 's/.*"id":"(\w+)".*/\1/')
 ## Change the IP@Cloudflare using the API
 ###########################################
 update=$(curl -s -X PATCH "https://api.cloudflare.com/client/v4/zones/$zone_identifier/dns_records/$record_identifier" \
-                     -H "X-Auth-Email: $auth_email" \
-                     -H "$auth_header $auth_key" \
-                     -H "Content-Type: application/json" \
-                     --data "{\"type\":\"A\",\"name\":\"$record_name\",\"content\":\"$ip\",\"ttl\":\$ttl\,\"proxied\":${proxy}}")
+	-H "X-Auth-Email: $auth_email" \
+	-H "$auth_header $auth_key" \
+	-H "Content-Type: application/json" \
+	–data “{"type":"A","name":"$record_name","content":"$ip","ttl":$ttl,"proxied":${proxy}}”)
 
 ###########################################
 ## Report the status
